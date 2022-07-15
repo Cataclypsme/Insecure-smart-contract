@@ -39,7 +39,7 @@ contract ContentAccess {
     function addAuthCode(uint _hashmodulus) public {
         collectionOfAuthCodes.push(_hashmodulus);
         authCodeOwner[_hashmodulus] = msg.sender;
-        authCodeofLearner[msg.sender] = _hashmodulus;
+        authCodeOfLearner[msg.sender] = _hashmodulus;
         authCodeCount[msg.sender]++;
         emit NewAuthCodeIsAdded(_hashmodulus);
     }
