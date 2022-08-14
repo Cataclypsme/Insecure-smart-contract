@@ -30,8 +30,8 @@ contract ContentAccess {
 
         ///@param inputKeccak The input to be used to generate authorizationcodes
         ///@return Random 9-digits numbers.
-    function generateAuthCode(string memory inputKeccak) public pure returns (uint) {
-        uint hash = uint(keccak256(abi.encodePacked(inputKeccak)));
+    function generateAuthCode(string memory inputKeccak) public view returns (uint) {
+        uint hash = uint(keccak256(abi.encodePacked(inputKeccak, msg.sender, block.timestamp)));
         return hash % (10 ** 9);
     }
 
