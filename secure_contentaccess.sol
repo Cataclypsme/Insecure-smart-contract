@@ -33,8 +33,8 @@ contract ContentAccess is Ownable {
 
         ///@param inputKeccak The input to be used to generate authorizationcodes
         ///@return Random 9-digits numbers.
-    function _generateAuthCode(string memory inputKeccak) private pure returns (uint) {
-        uint hash = uint(keccak256(abi.encodePacked(inputKeccak)));
+    function _generateAuthCode(string memory inputKeccak) private view returns (uint) {
+        uint hash = uint(keccak256(abi.encodePacked(inputKeccak, msg.sender, block.timestamp)));
         return hash % (10 ** 9);
     }
 
